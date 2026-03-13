@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiago Furlan — Currículo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --transition-speed: 0.5s; }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f0eb;
+            --bg-secondary: #eee8e0;
+            --bg-card: rgba(255,255,255,0.85);
+            --bg-card-hover: rgba(255,255,255,0.98);
+            --bg-header: rgba(245,240,235,0.95);
+            --bg-topbar: #2c2416;
+            --bg-footer: #2c2416;
+            --text-primary: #1a1208;
+            --text-secondary: #4a3f2f;
+            --text-muted: #8a7a66;
+            --text-topbar: #f5f0eb;
+            --accent-1: #b5883a;
+            --accent-2: #c4673c;
+            --accent-3: #7a5c2e;
+            --accent-glow: rgba(181,136,58,0.25);
+            --border-color: rgba(181,136,58,0.25);
+            --border-strong: rgba(181,136,58,0.55);
+            --shadow-soft: 0 8px 32px rgba(44,36,22,0.1);
+            --shadow-medium: 0 16px 48px rgba(44,36,22,0.15);
+            --grid-color: rgba(181,136,58,0.08);
+            --logo-gradient: linear-gradient(45deg, #b5883a, #c4673c);
+            --particle-color: #b5883a;
+            --about-gradient: linear-gradient(135deg, #f0e8dc 0%, #e8ddd0 100%);
+            --input-bg: rgba(255,255,255,0.9);
+            --input-border: rgba(181,136,58,0.35);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #050510;
+            --bg-card: rgba(0,20,50,0.45);
+            --bg-card-hover: rgba(0,30,70,0.6);
+            --bg-header: rgba(0,0,0,0.92);
+            --bg-topbar: rgba(0,40,94,0.95);
+            --bg-footer: rgba(0,0,0,0.97);
+            --text-primary: #f0f4ff;
+            --text-secondary: #b0c0e0;
+            --text-muted: #6080a0;
+            --text-topbar: #f0f4ff;
+            --accent-1: #00ffff;
+            --accent-2: #ff00ff;
+            --accent-3: #0055a5;
+            --accent-glow: rgba(0,255,255,0.25);
+            --border-color: rgba(0,168,232,0.25);
+            --border-strong: rgba(0,255,255,0.55);
+            --shadow-soft: 0 8px 32px rgba(0,0,0,0.5);
+            --shadow-medium: 0 16px 48px rgba(0,255,255,0.1);
+            --grid-color: rgba(0,255,255,0.07);
+            --logo-gradient: linear-gradient(45deg, #00ffff, #ff00ff);
+            --particle-color: #00ffff;
+            --about-gradient: linear-gradient(135deg, rgba(0,40,94,0.9) 0%, rgba(0,85,165,0.9) 100%);
+            --input-bg: rgba(0,0,0,0.7);
+            --input-border: rgba(0,168,232,0.4);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            width: 62px; height: 34px; background: none; border: none; cursor: pointer;
+            filter: drop-shadow(0 4px 16px rgba(0,0,0,0.18));
+        }
+        .toggle-track {
+            width: 62px; height: 34px; border-radius: 17px;
+            background: var(--accent-1); position: relative;
+            transition: background 0.4s ease;
+            box-shadow: 0 0 14px var(--accent-glow), inset 0 1px 3px rgba(0,0,0,0.15);
+            display: flex; align-items: center; padding: 0 5px; justify-content: space-between;
+        }
+        .toggle-icon { font-size: 14px; line-height: 1; z-index: 1; pointer-events: none; transition: opacity 0.3s; }
+        [data-theme="light"] .icon-moon { opacity: 0.4; }
+        [data-theme="light"] .icon-sun  { opacity: 1; }
+        [data-theme="dark"]  .icon-moon { opacity: 1; }
+        [data-theme="dark"]  .icon-sun  { opacity: 0.4; }
+        .toggle-thumb {
+            position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #fff;
+            top: 4px; left: 4px; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        [data-theme="dark"] .toggle-thumb { transform: translateX(28px); }
+
+        /* ===== PARTICLES ===== */
+        .particles { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; }
+        .particle { position:absolute; background:var(--particle-color); border-radius:50%; opacity:0.5; animation:float-particle 7s ease-in-out infinite; }
+        @keyframes float-particle { 0%,100%{transform:translateY(0) scale(1);opacity:0.5} 50%{transform:translateY(-22px) scale(1.15);opacity:0.8} }
+
+        /* ===== SCAN LINES ===== */
+        .scan-lines {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,255,0.025) 2px,rgba(0,255,255,0.025) 4px);
+            pointer-events: none; z-index: 100; opacity: 0; transition: opacity var(--transition-speed);
+        }
+        [data-theme="dark"] .scan-lines { opacity: 1; }
+
+        /* ===== LOADING ===== */
+        .loading { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-primary); display:flex; align-items:center; justify-content:center; z-index:10000; transition:opacity 0.5s ease; }
+        .loading.fade-out { opacity:0; pointer-events:none; }
+        .loader { width:72px; height:72px; border:3px solid var(--border-color); border-top:3px solid var(--accent-1); border-radius:50%; animation:spin 0.85s linear infinite; }
+        @keyframes spin { 100%{transform:rotate(360deg)} }
+
+        /* ===== TOP BAR ===== */
+        .top-bar { background: var(--bg-topbar); padding: 8px 0; z-index:1000; position:relative; }
+        .top-bar .container { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; justify-content:space-between; align-items:center; }
+        .top-contact a { color:var(--text-topbar); margin-right:18px; text-decoration:none; font-size:0.85rem; font-weight:500; opacity:0.9; transition:opacity 0.2s, color 0.2s; letter-spacing:0.01em; }
+        .top-contact a:hover { color:var(--accent-1); opacity:1; }
+        .top-social a { color:var(--text-topbar); margin-left:12px; font-size:0.95rem; transition:all 0.2s; opacity:0.8; }
+        .top-social a:hover { color:var(--accent-1); opacity:1; }
+
+        /* ===== HEADER ===== */
+        header { background:var(--bg-header); backdrop-filter:blur(20px); position:sticky; top:0; z-index:999; border-bottom:1px solid var(--border-color); transition:background var(--transition-speed); }
+        .header-container { max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:900; background:var(--logo-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:-0.01em; }
+        nav ul { display:flex; list-style:none; align-items:center; gap:24px; }
+        nav ul li a { color:var(--text-secondary); text-decoration:none; font-weight:500; font-size:0.88rem; letter-spacing:0.02em; transition:color 0.2s; position:relative; }
+        nav ul li a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--accent-1); transition:width 0.3s ease; border-radius:2px; }
+        nav ul li a:hover { color:var(--text-primary); }
+        nav ul li a:hover::after { width:100%; }
+        .cta-button { background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); color:#fff !important; padding:11px 22px; border-radius:30px; font-weight:600; font-size:0.85rem; text-decoration:none; transition:all 0.3s; box-shadow:0 4px 16px var(--accent-glow); letter-spacing:0.02em; white-space:nowrap; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; }
+        .cta-button:hover { transform:translateY(-2px); box-shadow:0 8px 28px var(--accent-glow); }
+        .cta-button::after { display:none !important; }
+
+        /* ===== HERO ===== */
+        .hero { min-height: 60vh; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+        .projection-grid {
+            position:absolute; top:0; left:0; width:100%; height:100%;
+            background-image: linear-gradient(var(--grid-color) 1px,transparent 1px), linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+            background-size: 55px 55px; animation:gridMove 22s linear infinite; z-index:1;
+        }
+        @keyframes gridMove { 0%{transform:translate(0,0)} 100%{transform:translate(55px,55px)} }
+        .hero-content { text-align:center; z-index:10; max-width:860px; padding:60px 24px; position:relative; }
+        .hero-avatar {
+            width: 140px; height: 140px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            margin: 0 auto 28px; display:flex; align-items:center; justify-content:center;
+            font-size: 3.5rem; color: #fff;
+            box-shadow: 0 0 50px var(--accent-glow), 0 0 0 4px var(--border-strong);
+            animation: pulse-avatar 3s ease-in-out infinite;
+        }
+        @keyframes pulse-avatar { 0%,100%{box-shadow:0 0 50px var(--accent-glow),0 0 0 4px var(--border-strong)} 50%{box-shadow:0 0 80px var(--accent-glow),0 0 0 6px var(--border-strong)} }
+        .hero h1 {
+            font-family:'Cormorant Garamond',serif; font-size:3.6rem; font-weight:700; margin-bottom:12px; line-height:1.1; letter-spacing:-0.02em;
+            background:linear-gradient(135deg,#1a1208 30%,#b5883a 70%,#c4673c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        [data-theme="dark"] .hero h1 { background:linear-gradient(45deg,var(--accent-1),white,var(--accent-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:dark-glow 2.5s ease-in-out infinite alternate; }
+        @keyframes dark-glow { from{filter:drop-shadow(0 0 18px rgba(0,255,255,0.4))} to{filter:drop-shadow(0 0 28px rgba(255,0,255,0.65))} }
+        .hero-role { font-size:1.15rem; color:var(--accent-1); font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px; }
+        .hero-tags { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:32px; }
+        .hero-tag { background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px; padding:6px 16px; font-size:0.8rem; color:var(--text-secondary); font-weight:500; backdrop-filter:blur(10px); }
+        [data-theme="dark"] .hero-tag { border-color:var(--border-strong); }
+        .hero-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+        /* ===== SECTION SHARED ===== */
+        section { position:relative; z-index:2; }
+        .section-label { font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent-1); margin-bottom:12px; display:block; }
+        .section-title { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:700; margin-bottom:28px; line-height:1.2; color:var(--text-primary); letter-spacing:-0.02em; }
+        [data-theme="dark"] .section-title { color:var(--accent-1); text-shadow:0 0 18px var(--accent-glow); }
+        .section-header { text-align:center; margin-bottom:56px; }
+
+        /* ===== COMPETÊNCIAS ===== */
+        .competencias { padding:90px 24px; background:var(--about-gradient); transition:background var(--transition-speed); }
+        .comp-container { max-width:1200px; margin:0 auto; }
+        .comp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
+        .comp-card {
+            background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px;
+            padding:32px 28px; backdrop-filter:blur(12px); transition:all 0.4s ease; position:relative; overflow:hidden;
+        }
+        .comp-card::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(181,136,58,0.06),transparent); transition:left 0.5s ease; }
+        [data-theme="dark"] .comp-card::before { background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent); }
+        .comp-card:hover::before { left:100%; }
+        .comp-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-medium); border-color:var(--border-strong); background:var(--bg-card-hover); }
+        .comp-icon { font-size:2.2rem; color:var(--accent-1); margin-bottom:16px; display:block; transition:all 0.3s; }
+        [data-theme="dark"] .comp-icon { text-shadow:0 0 24px var(--accent-1); }
+        .comp-card:hover .comp-icon { color:var(--accent-2); transform:scale(1.1) rotate(-5deg); }
+        .comp-card h3 { font-size:1rem; font-weight:700; color:var(--text-primary); margin-bottom:10px; letter-spacing:0.02em; }
+        .comp-card p { color:var(--text-secondary); font-size:0.9rem; line-height:1.65; }
+
+        /* ===== EXPERIÊNCIA ===== */
+        .experiencia { padding:90px 24px; background:var(--bg-primary); transition:background var(--transition-speed); }
+        .exp-container { max-width:900px; margin:0 auto; }
+        .timeline { position:relative; padding-left:40px; }
+        .timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent-1),var(--accent-2)); border-radius:2px; }
+        .timeline-item { position:relative; margin-bottom:48px; opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+        .timeline-item.visible { opacity:1; transform:translateY(0); }
+        .timeline-dot { position:absolute; left:-34px; top:6px; width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); box-shadow:0 0 16px var(--accent-glow); }
+        .exp-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:18px; padding:28px 32px; backdrop-filter:blur(12px); transition:all 0.3s; }
+        .exp-card:hover { border-color:var(--border-strong); box-shadow:var(--shadow-soft); }
+        .exp-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:8px; }
+        .exp-company { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--accent-1); }
+        [data-theme="dark"] .exp-company { text-shadow:0 0 10px var(--accent-glow); }
+        .exp-period { background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); color:#fff; padding:4px 14px; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.05em; white-space:nowrap; }
+        .exp-role { font-weight:700; color:var(--text-primary); font-size:0.95rem; margin-bottom:12px; }
+        .exp-desc { color:var(--text-secondary); font-size:0.88rem; line-height:1.7; }
+        .exp-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+        .exp-tag { background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:3px 10px; font-size:0.75rem; color:var(--text-muted); font-weight:500; }
+
+        /* ===== FORMAÇÃO & CERTS ===== */
+        .formacao { padding:90px 24px; background:var(--about-gradient); transition:background var(--transition-speed); }
+        .form-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+        @media(max-width:800px){ .form-container{grid-template-columns:1fr; gap:40px;} }
+        .form-col h2 { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:700; color:var(--text-primary); margin-bottom:28px; display:flex; align-items:center; gap:12px; }
+        [data-theme="dark"] .form-col h2 { color:var(--accent-1); }
+        .form-item { background:var(--bg-card); border:1px solid var(--border-color); border-left:3px solid var(--accent-1); border-radius:14px; padding:20px 22px; margin-bottom:16px; transition:all 0.25s; }
+        .form-item:hover { background:var(--bg-card-hover); box-shadow:var(--shadow-soft); }
+        .form-item strong { display:block; color:var(--accent-1); font-size:0.9rem; font-weight:700; margin-bottom:4px; }
+        .form-item span { color:var(--text-secondary); font-size:0.85rem; }
+
+        /* ===== CONHECIMENTOS ===== */
+        .conhecimentos { padding:90px 24px; background:var(--bg-primary); transition:background var(--transition-speed); }
+        .conh-container { max-width:1200px; margin:0 auto; }
+        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+        .skill-pill {
+            background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px;
+            padding:14px 18px; display:flex; align-items:center; gap:12px;
+            transition:all 0.3s; cursor:default;
+        }
+        .skill-pill:hover { border-color:var(--accent-1); background:var(--bg-card-hover); transform:translateY(-2px); box-shadow:0 4px 16px var(--accent-glow); }
+        .skill-pill i { color:var(--accent-1); font-size:1.1rem; flex-shrink:0; }
+        [data-theme="dark"] .skill-pill i { text-shadow:0 0 10px var(--accent-1); }
+        .skill-pill span { color:var(--text-secondary); font-size:0.85rem; font-weight:500; }
+
+        /* ===== CONTATO ===== */
+        .contato { padding:90px 24px; background:var(--about-gradient); transition:background var(--transition-speed); }
+        .contato-container { max-width:800px; margin:0 auto; text-align:center; }
+        .contato-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:40px; }
+        .contato-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:18px; padding:28px 22px; transition:all 0.3s; }
+        .contato-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-medium); border-color:var(--border-strong); }
+        .contato-card i { font-size:1.8rem; color:var(--accent-1); margin-bottom:12px; display:block; }
+        [data-theme="dark"] .contato-card i { text-shadow:0 0 16px var(--accent-1); }
+        .contato-card p { color:var(--text-secondary); font-size:0.9rem; line-height:1.5; }
+        .contato-card a { color:var(--text-secondary); text-decoration:none; transition:color 0.2s; }
+        .contato-card a:hover { color:var(--accent-1); }
+
+        /* ===== FOOTER ===== */
+        footer { background:var(--bg-footer); padding:36px 24px; text-align:center; border-top:1px solid var(--border-color); }
+        footer p { color:rgba(245,240,235,0.45); font-size:0.85rem; }
+        [data-theme="dark"] footer p { color:rgba(176,192,224,0.4); }
+
+        /* ===== OBJETIVO ===== */
+        .objetivo { padding:60px 24px; background:var(--bg-primary); transition:background var(--transition-speed); }
+        .obj-container { max-width:860px; margin:0 auto; }
+        .obj-box { background:var(--bg-card); border:1px solid var(--border-strong); border-radius:22px; padding:40px 48px; backdrop-filter:blur(14px); position:relative; overflow:hidden; }
+        .obj-box::before { content:'"'; font-family:'Cormorant Garamond',serif; font-size:10rem; color:var(--accent-1); opacity:0.1; position:absolute; top:-20px; left:20px; line-height:1; }
+        .obj-box p { color:var(--text-secondary); font-size:1.05rem; line-height:1.8; font-style:italic; position:relative; z-index:1; }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px){ .header-container{flex-direction:column;gap:14px;} nav ul{flex-wrap:wrap;justify-content:center;gap:14px;} }
+        @media(max-width:600px){ .hero h1{font-size:2.4rem;} .timeline{padding-left:28px;} .exp-card{padding:20px;} .obj-box{padding:28px 24px;} }
+
+        /* ===== PRINT HIDDEN ===== */
+        @media print { .theme-toggle,.scan-lines,.particles,.top-bar,header,.loading{display:none!important} .hero{min-height:auto;padding:30px 0;} body{background:#fff!important;color:#000!important;} }
+		
+		
+		/* ===== FOTO TF ===== */
+		.author-avatar {
+            width: 150px; height: 150px;
+            border-radius: 100%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading"><div class="loader"></div></div>
+    <div class="scan-lines"></div>
+    <div class="particles" id="particles"></div>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <div class="toggle-track">
+            <span class="toggle-icon icon-sun">☀️</span>
+            <span class="toggle-icon icon-moon">🌙</span>
+            <div class="toggle-thumb"></div>
+        </div>
+    </button>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-contact">
+                <a href="tel:+5511991862867"><i class="fas fa-phone"></i> (11) 99186-2867</a>
+                <a href="/cdn-cgi/l/email-protection#740012111a130704341c1b0019151d185a171b19"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="9febf9faf1f8ecefdff7f0ebf2fef6f3b1fcf0f2">[email&#160;protected]</span></a>
+            </div>
+            <div class="top-social">
+                <a href="/cdn-cgi/l/email-protection#b9cddfdcd7decac9f9d1d6cdd4d8d0d597dad6d4"><i class="fas fa-paper-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Thiago Furlan<span style="font-size:0.6em;vertical-align:middle;opacity:0.80;"> Eng</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#competencias">Competências</a></li>
+                    <li><a href="#experiencia">Experiência</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#conhecimentos">Conhecimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><button class="cta-button" onclick="downloadPDF()"><i class="fas fa-download" style="margin-right:6px;"></i>Baixar CV PDF</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="projection-grid"></div>
+        <div class="hero-content">
+            <div class="hero-avatar"><i class="author-avatar">
+			<img src="src/TH.jpg" alt="enxerto" style="width: 100%; height: 150px; border-radius: 350px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+			</i></div>
+            <h1>Thiago Furlan</h1>
+            <p class="hero-role">Analista de Sistemas & Suporte Sênior (Sr.)</p>
+            <div class="hero-tags">
+                <span class="hero-tag"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--accent-1);"></i> São Paulo — SP</span>
+                <span class="hero-tag"><i class="fas fa-graduation-cap" style="margin-right:6px;color:var(--accent-1);"></i> Análise e Des. de Sistemas</span>
+                <span class="hero-tag"><i class="fas fa-cogs" style="margin-right:6px;color:var(--accent-1);"></i> Scrum - Kanban - ITIL - COBIT ·</span>
+				<span class="hero-tag"><i class="fas fa-code" style="margin-right:6px;color:var(--accent-1);"></i> PL/SQL & SQL Tuning - Shell Script - HTML - CSS ·</span>
+				<span class="hero-tag"><i class="fas fa-terminal" style="margin-right:6px;color:var(--accent-1);"></i> Shell Script - Power Shell - Unix ·</span>
+				<span class="hero-tag"><i class="fas fa-code" style="margin-right:6px;color:var(--accent-1);"></i> Python - Java - PowerShell - VBA (Macro) · </span>
+				<span class="hero-tag"><i class="fas fa-chart-bar" style="margin-right:6px;color:var(--accent-1);"></i> Power BI - Azure - Automation anywhere - Qlik - Microstrategy ·</span>
+
+            </div>
+            <div class="hero-actions">
+                <a href="#experiencia" class="cta-button"><i class="fas fa-briefcase" style="margin-right:6px;"></i>Ver Experiências</a>
+                <button class="cta-button" style="background:transparent;border:2px solid var(--accent-1);color:var(--accent-1)!important;-webkit-text-fill-color:var(--accent-1)!important;" onclick="downloadPDF()">
+                    <i class="fas fa-file-pdf" style="margin-right:6px;"></i>Baixar PDF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivo -->
+    <section class="objetivo" id="objetivo">
+        <div class="obj-container">
+            <div class="obj-box">
+                <p>Adquirir novos conhecimentos, me empenhar e dedicar ao máximo obtendo oportunidade de crescimento dentro da empresa, trazendo assim benefícios para ambos. Trabalhando em equipe, espírito de cooperação, comprometido com o trabalho e com a qualidade dos processos da organização, agilidade, eficiência, dinamismo, paciência e organização complementam o meu perfil.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competências -->
+    <section class="competencias" id="competencias">
+        <div class="comp-container">
+            <div class="section-header">
+                <span class="section-label">Habilidades</span>
+                <h2 class="section-title">Competências Profissionais</h2>
+            </div>
+            <div class="comp-grid">
+                <div class="comp-card">
+                    <i class="fas fa-project-diagram comp-icon"></i>
+                    <h3>Gestão de Projetos</h3>
+                    <p>Análise, desenvolvimento e execução de projetos seguindo práticas do PMI, ITIL e COBIT, com controle de demandas, cronograma e negociação de prazos, custos e escopo.</p>
+                </div>
+                <div class="comp-card">
+                    <i class="fas fa-sync-alt comp-icon"></i>
+                    <h3>Metodologias Ágeis</h3>
+                    <p>Aplicação em desenvolvimento de metodologia ágil SCRUM e Kanban, integrando equipes e alinhando objetivos estratégicos da empresa.</p>
+                </div>
+                <div class="comp-card">
+                    <i class="fas fa-handshake comp-icon"></i>
+                    <h3>TI & Negócios</h3>
+                    <p>Atuação e integração entre área de Negócios e TI, atendimento às necessidades do usuário/cliente, garantindo satisfação nos projetos realizados.</p>
+                </div>
+                <div class="comp-card">
+                    <i class="fas fa-cogs comp-icon"></i>
+                    <h3>Otimização de Processos</h3>
+                    <p>Planejamento de atividades, especificação e otimização de rotinas, assegurando qualidade e agilidade nos processos entre áreas.</p>
+                </div>
+                <div class="comp-card">
+                    <i class="fas fa-database comp-icon"></i>
+                    <h3>Scripts & Automação</h3>
+                    <p>Criação e execução de scripts PL/SQL, SQL Server, Shell Script e PowerShell. Manutenção em automações VBA (macro) e Automation Anywhere.</p>
+                </div>
+                <div class="comp-card">
+                    <i class="fas fa-vial comp-icon"></i>
+                    <h3>Testes & Qualidade</h3>
+                    <p>Criação de Plano de Testes, cenários, evidências e execução de testes de regressão, performance e integrados TI/UAT em múltiplos sistemas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiência -->
+    <section class="experiencia" id="experiencia">
+        <div class="exp-container">
+            <div class="section-header">
+                <span class="section-label">Trajetória</span>
+                <h2 class="section-title">Experiências Profissionais</h2>
+            </div>
+            <div class="timeline">
+
+				<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="exp-card">
+							<div class="exp-header">
+								<span class="exp-company">Triad Systems Integration — SP</span>
+								<span class="exp-period">11/2020 – Atual</span>
+							</div>
+							<div class="exp-role">Analista de Sistema Sênior (Sr.)</div>
+							<div class="exp-desc">
+							Experiência no segmento de Telecom (Co-billing e VAS) Projetos da OI, em sustentação, análise e teste. Responsável por analisar, elaborar, 
+							testar e executar processos dos sistemas GCOB, TVAS, GBIL e NFCOM da operadora OI.
+                            <br><br>
+                            Controle e interação através das ferramentas Quality Center, BMC Remedy e sistemas corporativos. 
+							Criação e execução de scripts PL/SQL, Shell Script, correção de BackLog e Rollback. Levantamento de requisitos, modelagem de dados, scripts (DML/DDL), 
+							geração/extração de massa de dados, plano de testes e execução de testes integrados TI/UAT.
+							</div>
+							<div class="exp-tags">
+								<span class="exp-tag">PL/SQL</span>
+								<span class="exp-tag">Shell Script</span>
+								<span class="exp-tag">Telecom</span>
+								<span class="exp-tag">Python</span>
+								<span class="exp-tag">Remedy</span>
+								<span class="exp-tag">Co-billing</span>
+								<span class="exp-tag">NFCOM</span>
+							</div>
+						</div>
+					</div>
+
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <span class="exp-company">Makro Food Service — SP</span>
+                            <span class="exp-period">11/2019 – 10/2020</span>
+                        </div>
+                        <div class="exp-role">Analista de Suporte Pleno</div>
+                        <div class="exp-desc">
+                            Responsável por acompanhar e monitorar processos e integrações entre sistemas de operação (Sustentação). Criação de relatórios e alertas via Script PL/SQL, SQL Server, Shell Script e PowerShell. Manutenção em relatórios de BI analítico nas ferramentas Qlik e Microstrategy. Manutenção em automações VBA (macro) e Automation Anywhere.
+                            <br><br>
+                            Levantamento de requisitos, especificação, modelagem de dados, geração/extração de massa de dados "Dump", configurações dos sistemas e implantação de GMUD. Criação de Plano de Testes, execução de testes integrados TI/UAT envolvendo os sistemas Profimetrics, MBS, WMW, ZEUS, Portal e-commerce SAP. Sustentação para equipe de vendas, comercial e todas as áreas da empresa.
+                        </div>
+                        <div class="exp-tags">
+                            <span class="exp-tag">PL/SQL</span>
+                            <span class="exp-tag">SQL Server</span>
+                            <span class="exp-tag">Qlik</span>
+                            <span class="exp-tag">Microstrategy</span>
+                            <span class="exp-tag">VBA</span>
+                            <span class="exp-tag">Automation Anywhere</span>
+                            <span class="exp-tag">GMUD</span>
+                            <span class="exp-tag">SAP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <span class="exp-company">3con — SP</span>
+                            <span class="exp-period">05/2019 – 10/2019</span>
+                        </div>
+                        <div class="exp-role">Analista de Teste Pleno</div>
+                        <div class="exp-desc">
+							Manutenção em relatórios do BI analytic nas ferramentas Qlik e Microstrategy. 
+							Acompanhar e realizar manutenção em automações em VBA (macro) e Automation anywhere. 
+							Elaborar levantamento de requisitos, especificação, elaboração de cenários casos de uso, modelagem de dados, geração/extração de massa de dados “Dump”, configurações dos sistemas e implantação e gerenciamento de GMUD. 
+							<br>
+							<br>
+                            Atuação na área de qualidade e testes de software, realizando análise, elaboração e execução de planos de teste, cenários e evidências.
+                        </div>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Testes de Software</span>
+                            <span class="exp-tag">QA</span>
+                            <span class="exp-tag">Análise de Requisitos</span>
+							<span class="exp-tag">Profimetrics</span>
+							<span class="exp-tag">WMW</span>
+							<span class="exp-tag">ZEUS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <span class="exp-company">Triad Systems — SP</span>
+                            <span class="exp-period">04/2011 – 07/2018</span>
+                        </div>
+                        <div class="exp-role">Analista de Sistema</div>
+                        <div class="exp-desc">
+                            7 anos de experiência no segmento de Telecom (Co-billing e VAS) na equipe de produção (Sustentação), análise e teste. Responsável por analisar, elaborar, 
+							testar e executar processos dos sistemas GCOB e TVAS envolvendo as operadoras OI, VIVO, TIM e Nextel. Atendimento a eventuais problemas, erros/chamados “SLA” das execuções e processos do sistema
+                            <br><br>
+                            Controle e interação através das ferramentas Quality Center, BMC Remedy e sistemas corporativos. Criação e execução de scripts PL/SQL, Shell Script, correção de BackLog e Rollback. Levantamento de requisitos, modelagem de dados, geração/extração de massa de dados, plano de testes e execução de testes integrados TI/UAT.
+                        </div>
+                        <div class="exp-tags">
+                            <span class="exp-tag">PL/SQL</span>
+                            <span class="exp-tag">Shell Script</span>
+                            <span class="exp-tag">Telecom</span>
+                            <span class="exp-tag">Quality Center</span>
+                            <span class="exp-tag">BMC Remedy</span>
+                            <span class="exp-tag">Co-billing</span>
+                            <span class="exp-tag">VAS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Formação & Certificações -->
+    <section class="formacao" id="formacao">
+        <div class="form-container">
+            <div class="form-col">
+                <h2><i class="fas fa-graduation-cap" style="color:var(--accent-1);"></i> Formação Acadêmica</h2>
+                <div class="form-item">
+                    <strong>Análise e Desenvolvimento de Sistemas — Graduação</strong>
+                    <span>Uninove — Associação Educacional Nove de Julho, Vila Maria</span>
+                    <br><span style="color:var(--accent-2);font-weight:600;font-size:0.8rem;">Conclusão: 2010</span>
+                </div>
+            </div>
+            <div class="form-col">
+                <h2><i class="fas fa-certificate" style="color:var(--accent-1);"></i> Certificações</h2>
+                <div class="form-item">
+                    <strong>Big Data Foundation</strong>
+                    <span>Certificação em fundamentos de Big Data</span>
+                </div>
+                <div class="form-item">
+                    <strong>Data Science Essentials</strong>
+                    <span>Certificação em ciência de dados essencial</span>
+                </div>
+                <div class="form-item">
+                    <strong>Data Governance Foundation</strong>
+                    <span>Certificação em governança de dados</span>
+                </div>
+                <div class="form-item">
+                    <strong>Cloud Security Foundation</strong>
+                    <span>Certificação em segurança em nuvem</span>
+                </div>
+                <div class="form-item">
+                    <strong>Big Data Analyst</strong>
+                    <span>Certificação integradora em análise de Big Data</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conhecimentos -->
+    <section class="conhecimentos" id="conhecimentos">
+        <div class="conh-container">
+            <div class="section-header">
+                <span class="section-label">Tecnologias</span>
+                <h2 class="section-title">Conhecimentos Técnicos</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-pill"><i class="fas fa-terminal"></i><span>Shell Script / Unix</span></div>
+                <div class="skill-pill"><i class="fas fa-database"></i><span>SQL Oracle / SQL Server</span></div>
+                <div class="skill-pill"><i class="fas fa-code"></i><span>PL/SQL & SQL Tuning</span></div>
+                <div class="skill-pill"><i class="fab fa-java"></i><span>Java / NetBeans / Eclipse</span></div>
+                <div class="skill-pill"><i class="fab fa-html5"></i><span>HTML / CSS</span></div>
+                <div class="skill-pill"><i class="fas fa-robot"></i><span>Automation Anywhere</span></div>
+                <div class="skill-pill"><i class="fas fa-file-excel"></i><span>VBA (Macro)</span></div>
+                <div class="skill-pill"><i class="fab fa-windows"></i><span>PowerShell</span></div>
+                <div class="skill-pill"><i class="fas fa-chart-bar"></i><span>Qlik / Microstrategy</span></div>
+                <div class="skill-pill"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div>
+                <div class="skill-pill"><i class="fas fa-r-project" style="font-style:normal;font-weight:700;"></i><span>RStudio</span></div>
+                <div class="skill-pill"><i class="fas fa-tasks"></i><span>Scrum / Kanban</span></div>
+                <div class="skill-pill"><i class="fas fa-shield-alt"></i><span>ITIL / COBIT</span></div>
+                <div class="skill-pill"><i class="fas fa-calendar-alt"></i><span>MS Project</span></div>
+                <div class="skill-pill"><i class="fas fa-sitemap"></i><span>UML / APF</span></div>
+                <div class="skill-pill"><i class="fas fa-image"></i><span>Photoshop / Indesign</span></div>
+                <div class="skill-pill"><i class="fab fa-microsoft"></i><span>Pacote Office</span></div>
+                <div class="skill-pill"><i class="fas fa-network-wired"></i><span>Configuração de Redes</span></div>
+				<div class="skill-pill"><i class="fab fa-windows"></i><span>Power BI</span></div>
+				<div class="skill-pill"><i class="fab fa-python"></i><span>Python</span></div>
+				<div class="skill-pill"><i class="fas fa-project-diagram comp-icon"></i><span>Automação de processos de negócios (BPA) com LLMs e RAG</span></div>
+				<div class="skill-pill"><i class="fas fa-cogs comp-icon"></i><span>Data Science e Machine Learning</span></div>
+				<div class="skill-pill"><i class="fas fa-graduation-cap"></i><span>Inteligência de Negócios e Data Analytics</span></div>
+				<div class="skill-pill"><i class="fas fa-robot"></i><span>AI Automation Engineering</span></div>
+				
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contato" id="contato">
+        <div class="contato-container">
+            <div class="section-header">
+                <span class="section-label">Vamos conversar</span>
+                <h2 class="section-title">Entre em Contato</h2>
+            </div>
+            <div class="contato-cards">
+                <div class="contato-card">
+                    <i class="fas fa-phone"></i>
+                    <p><strong style="color:var(--text-primary);">Telefone</strong><br><a href="tel:+5511991862867">(11) 99186-2867 Tim</a></p>
+                </div>
+                <div class="contato-card">
+                    <i class="fas fa-envelope"></i>
+                    <p><strong style="color:var(--text-primary);">E-mail</strong><br><a href="/cdn-cgi/l/email-protection#ed998b88838a9e9dad858299808c8481c38e8280"><span class="__cf_email__" data-cfemail="a5d1c3c0cbc2d6d5e5cdcad1c8c4ccc98bc6cac8">[email&#160;protected]</span></a></p>
+                </div>
+                <div class="contato-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><strong style="color:var(--text-primary);">Localização</strong><br>São Paulo — SP<br>CEP 05038-130</p>
+                </div>
+            </div>
+            <div style="margin-top:40px;">
+                <button class="cta-button" onclick="downloadPDF()" style="padding:16px 36px;font-size:1rem;">
+                    <i class="fas fa-file-pdf" style="margin-right:10px;"></i>Baixar Currículo em PDF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Thiago Furlan — Currículo Profissional. Todos os direitos reservados.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // Theme Toggle
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('cv-theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('cv-theme', next);
+            rebuildParticles();
+        });
+
+        // Loading
+        window.addEventListener('load', () => setTimeout(() => document.getElementById('loading').classList.add('fade-out'), 900));
+
+        // Particles
+        function createParticles() {
+            const c = document.getElementById('particles');
+            c.innerHTML = '';
+            for (let i = 0; i < 35; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const s = Math.random() * 4 + 1.5;
+                p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${5+Math.random()*4}s;animation-delay:${Math.random()*3}s;`;
+                c.appendChild(p);
+            }
+        }
+        function rebuildParticles() { createParticles(); }
+        createParticles();
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(link.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Intersection Observer
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .comp-card, .form-item, .skill-pill, .contato-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(16px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        document.querySelectorAll('.timeline-item.visible, .comp-card.visible, .form-item.visible, .skill-pill.visible, .contato-card.visible').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+
+        // IntersectionObserver visible toggle
+        const obs2 = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.timeline-item, .comp-card, .form-item, .skill-pill, .contato-card').forEach(el => obs2.observe(el));
+
+        // PDF Download — gera PDF fiel ao conteúdo real da página
+        function downloadPDF() {
+            const btns = document.querySelectorAll('[onclick="downloadPDF()"]');
+            btns.forEach(btn => { btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:6px;"></i>Gerando PDF...'; btn.disabled = true; });
+
+            // Coletar experiências diretamente do DOM
+            let expBlocks = '';
+            document.querySelectorAll('#experiencia .timeline-item').forEach(item => {
+                const company  = (item.querySelector('.exp-company')  || {}).innerText || '';
+                const period   = (item.querySelector('.exp-period')   || {}).innerText || '';
+                const role     = (item.querySelector('.exp-role')     || {}).innerText || '';
+                const descEl   = item.querySelector('.exp-desc');
+                const desc     = descEl ? descEl.innerText.trim().replace(/\s*\n\s*/g, ' ') : '';
+                const tags     = Array.from(item.querySelectorAll('.exp-tag')).map(t => t.innerText).join('  ·  ');
+                expBlocks += `<div class="exp-block">
+                    <div class="exp-row">
+                        <span class="exp-co">${company}</span>
+                        <span class="exp-per">${period}</span>
+                    </div>
+                    <div class="exp-role-pdf">${role}</div>
+                    <div class="exp-desc-pdf">${desc}</div>
+                    ${tags ? `<div class="exp-tags-pdf">${tags}</div>` : ''}
+                </div>`;
+            });
+
+            // Coletar skills
+            const skills = Array.from(document.querySelectorAll('.skill-pill span')).map(s => s.innerText).join('  ·  ');
+
+            // Montar HTML do PDF
+            const html = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
+            <style>
+                * { margin:0; padding:0; box-sizing:border-box; }
+                body { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #1a1208; background: #fff; padding: 28px 32px; max-width: 794px; margin: 0 auto; }
+                h1 { font-family: Georgia, serif; font-size: 26px; font-weight: 900; color: #1a1208; margin-bottom: 4px; }
+                .subtitle { font-size: 11px; color: #b5883a; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+                .contact { font-size: 10px; color: #4a3f2f; margin-bottom: 4px; }
+                .header { text-align: center; border-bottom: 3px solid #b5883a; padding-bottom: 16px; margin-bottom: 20px; }
+                h2 { font-family: Georgia, serif; font-size: 12px; color: #b5883a; border-left: 4px solid #b5883a; padding-left: 10px; margin: 18px 0 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+                p, li { font-size: 10.5px; color: #4a3f2f; line-height: 1.7; }
+                ul { padding-left: 18px; margin-bottom: 6px; }
+                .exp-block { background: #faf7f3; border-left: 3px solid #c4673c; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; page-break-inside: avoid; }
+                .exp-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3px; }
+                .exp-co { font-weight: 700; font-size: 11px; color: #1a1208; }
+                .exp-per { background: #b5883a; color: #fff; padding: 1px 8px; border-radius: 10px; font-size: 9px; font-weight: 700; white-space: nowrap; }
+                .exp-role-pdf { color: #b5883a; font-weight: 700; font-size: 10.5px; margin-bottom: 5px; }
+                .exp-desc-pdf { font-size: 10px; color: #4a3f2f; line-height: 1.65; }
+                .exp-tags-pdf { font-size: 9px; color: #8a7a66; margin-top: 6px; }
+                .skills-text { font-size: 10px; color: #4a3f2f; line-height: 1.8; }
+                .italic { font-style: italic; }
+            </style></head><body>
+            <div class="header">
+                <h1>Thiago Furlan</h1>
+                <div class="subtitle">Analista de Sistemas &amp; Suporte Pleno</div>
+                <div class="contact">📍 São Paulo — SP, CEP 05038-130 &nbsp;|&nbsp; 📞 (11) 99186-2867 Tim &nbsp;|&nbsp; ✉️ tfengsp@hotmail.com</div>
+            </div>
+
+            <h2>Objetivo</h2>
+            <p class="italic">Adquirir novos conhecimentos, me empenhar e dedicar ao máximo obtendo oportunidade de crescimento dentro da empresa, trazendo assim benefícios para ambos. Trabalhando em equipe, espírito de cooperação, comprometido com o trabalho e com a qualidade dos processos da organização, agilidade, eficiência, dinamismo, paciência e organização complementam o meu perfil.</p>
+
+            <h2>Competências Profissionais</h2>
+            <ul>
+                <li>Análise, desenvolvimento e execução de projetos seguindo práticas do PMI, ITIL e COBIT.</li>
+                <li>Aplicação em desenvolvimento de metodologia ágil SCRUM e Kanban.</li>
+                <li>Atuação e integração entre área de Negócios e TI, garantindo satisfação nos projetos realizados.</li>
+                <li>Planejamento de atividades, especificação e otimização de rotinas entre áreas.</li>
+                <li>Scripts PL/SQL, SQL Server, Shell Script, PowerShell e automações VBA / Automation Anywhere.</li>
+                <li>Criação de Plano de Testes, cenários, evidências e testes integrados TI/UAT em múltiplos sistemas.</li>
+            </ul>
+
+            <h2>Experiências Profissionais</h2>
+            ${expBlocks}
+
+            <h2>Formação Acadêmica</h2>
+            <p><strong>Análise e Desenvolvimento de Sistemas — Graduação Concluído (2010)</strong><br>Uninove — Associação Educacional Nove de Julho, Vila Maria</p>
+
+            <h2>Certificações</h2>
+            <ul>
+                <li>Big Data Foundation</li>
+                <li>Data Science Essentials</li>
+                <li>Data Governance Foundation</li>
+                <li>Cloud Security Foundation</li>
+                <li>Big Data Analyst (Integradora)</li>
+            </ul>
+
+            <h2>Conhecimentos Técnicos</h2>
+            <p class="skills-text">${skills}</p>
+
+            </body></html>`;
+
+            // Abrir em nova janela e imprimir como PDF
+            const win = window.open('', '_blank', 'width=900,height=700');
+            if (!win) {
+                alert('Permita pop-ups para este site e tente novamente.');
+                btns.forEach(btn => { btn.innerHTML = '<i class="fas fa-file-pdf" style="margin-right:10px;"></i>Baixar Currículo em PDF'; btn.disabled = false; });
+                return;
+            }
+            win.document.write(html);
+            win.document.close();
+            win.focus();
+            setTimeout(() => {
+                win.print();
+                btns.forEach(btn => { btn.innerHTML = '<i class="fas fa-file-pdf" style="margin-right:10px;"></i>Baixar Currículo em PDF'; btn.disabled = false; });
+            }, 600);
+        }
+
+
+    </script>
+</body>
+</html>
